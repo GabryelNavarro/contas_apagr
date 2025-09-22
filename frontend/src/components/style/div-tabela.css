@@ -1,0 +1,31 @@
+
+
+
+.div-tabela{
+    width: 59.4%;
+    margin-left: 19.4rem;
+    height: 500px;
+    margin-top: 10rem;
+}
+
+h2{
+    font-family: fonte principal;
+    text-align: center;
+    text-transform: uppercase;
+    color: white;
+    padding-bottom: 1rem;
+    letter-spacing:2px;
+    font-size: 16pt;
+}
+
+.total{
+     font-family: fonte principal;
+    font-size: 16pt;
+    
+    text-transform: uppercase;
+    color: white;
+    padding-bottom: 1rem;
+    letter-spacing: 1px;
+    margin-top: 1rem;
+}
+

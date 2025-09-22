@@ -1,0 +1,15 @@
+@import url("reset.css");
+
+
+header h1{
+    text-align: center;
+    padding: 2rem;
+    font-family: fonte principal;
+    letter-spacing: 0.3rem;
+    font-size: 16pt;
+    text-transform: uppercase;
+    background-image: linear-gradient(to left, rgba(0, 0, 167, 0.532),rgba(0, 0, 0, 0.63));
+    color: var(--cor-principal);
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.5);
+
+}
