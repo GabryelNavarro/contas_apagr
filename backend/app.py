@@ -6,8 +6,10 @@ from datetime import datetime
 app = Flask(__name__)
 CORS(app)
 
-SUPABASE_URL = "https://usoxqckciquaqkozuyht.supabase.co"
-SUPABASE_KEY = "sb_secret_JKnC6rjLKgKFBPRl0FnWSw_WY3EKa1k"
+import os
+
+SUPABASE_URL = os.environ.get("SUPABASE_URL")
+SUPABASE_KEY = os.environ.get("SUPABASE_KEY")
 supabase: Client = create_client(SUPABASE_URL, SUPABASE_KEY)
 
 # ---------------------------
