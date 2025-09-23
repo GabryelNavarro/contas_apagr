@@ -8,7 +8,7 @@ CORS(app)
 
 SUPABASE_URL = "https://usoxqckciquaqkozuyht.supabase.co"
 SUPABASE_KEY = "sb_secret_JKnC6rjLKgKFBPRl0FnWSw_WY3EKa1k"
-supabase: Client = create_client(SUPABASE_URL, SUPABASE_KEY)
+
 
 # ---------------------------
 # GET com filtros
