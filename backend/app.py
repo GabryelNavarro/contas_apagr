@@ -6,9 +6,10 @@ from datetime import datetime
 app = Flask(__name__)
 CORS(app)
 
+# Supabase config
 SUPABASE_URL = "https://usoxqckciquaqkozuyht.supabase.co"
-SUPABASE_KEY = "sb_secret_JKnC6rjLKgKFBPRl0FnWSw_WY3EKa1k"
-
+SUPABASE_KEY = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InVzb3hxY2tjaXF1YXFrb3p1eWh0Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3NTgxMjczNjYsImV4cCI6MjA3MzcwMzM2Nn0.kbnykDqaxy5KDTn069F_dG-N_oBkpQTajY-Mx2v2eEY"
+supabase: Client = create_client(SUPABASE_URL, SUPABASE_KEY)
 
 # ---------------------------
 # GET com filtros
@@ -30,7 +31,6 @@ def contas():
     if valor:
         query = query.eq("valor_conta", valor)
     if data_inicio and data_fim:
-        # filtra pelo intervalo de datas de pagamento
         query = query.gte("data_pagamento", data_inicio).lte("data_pagamento", data_fim)
 
     response = query.execute()
@@ -46,8 +46,8 @@ def add_conta():
         "data_conta": data.get("data_conta"),
         "nome_conta": data.get("nome_conta"),
         "valor_conta": data.get("valor_conta"),
-        "status": "pendente",          # status inicial
-        "data_pagamento": None         # ainda não pago
+        "status": "pendente",
+        "data_pagamento": None
     }
     response = supabase.table("contas").insert(nova_conta).execute()
     return jsonify(response.data), 201
@@ -57,7 +57,7 @@ def add_conta():
 # ---------------------------
 @app.route("/contas/<int:conta_id>/pagar", methods=["PUT"])
 def pagar_conta(conta_id):
-    hoje = datetime.now().strftime("%Y-%m-%d")  # só data
+    hoje = datetime.now().strftime("%Y-%m-%d")
     response = supabase.table("contas").update({
         "status": "pago",
         "data_pagamento": hoje
